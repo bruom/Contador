@@ -8,11 +8,14 @@
 
 @interface Contador : NSObject 
 
++(Contador *)instancia;
+
 - (void)maisUmCueca;
 - (void)maisUmaGata;
 
 -(int)getBoys;
 -(int)getGirls;
+-(int)getTotal;
 
 @end
 
