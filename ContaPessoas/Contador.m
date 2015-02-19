@@ -22,6 +22,7 @@ static Contador *_instancia;
     if (self) {
         boy = 0;
         girl = 0;
+        
     }
     return self;
 }
@@ -34,9 +35,15 @@ static Contador *_instancia;
 
 - (void)maisUmCueca {
     boy = boy + 1;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NumUpdate"
+                                                        object:self
+                                                      userInfo:@{@"boy":[NSNumber numberWithInt: boy], @"girl":[NSNumber numberWithInt:girl],@"total":[NSNumber numberWithInt: boy+girl]}];
 }
 - (void)maisUmaGata {
     girl++;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NumUpdate"
+                                                        object:self
+                                                      userInfo:@{@"boy":[NSNumber numberWithInt: boy], @"girl":[NSNumber numberWithInt:girl],@"total":[NSNumber numberWithInt: boy+girl]}];
 }
 
 -(int)getBoys {

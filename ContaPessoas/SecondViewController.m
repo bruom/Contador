@@ -5,7 +5,6 @@
 //  Created by Vinicius Miana on 2/18/15.
 //  Copyright (c) 2015 Vinicius Miana. All rights reserved.
 //
-// TESTE DO GIT, COMENTANDO APENAS
 
 #import "SecondViewController.h"
 #import "Contador.h"
@@ -21,9 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     contador = [Contador instancia];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:@"NumUpdate" object:nil];
 }
 
-
+//atualização dos dados quando o contador é alterado
+-(void)update:(NSNotification*)notification{
+    _totalBoys.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"boy"] intValue]];
+    _totalGirls.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"girl"] intValue]];
+    _total.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"total"] intValue]];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
