@@ -7,7 +7,6 @@
 //
 
 #import "SecondViewController.h"
-#import "Contador.h"
 
 @interface SecondViewController () {
       Contador *contador;
@@ -17,18 +16,24 @@
 
 @implementation SecondViewController
 
+-(void)showBoys:(int)b{
+    _totalBoys.text = [NSString stringWithFormat: @"%d", b];
+}
+-(void)showGirls:(int)g{
+    _totalGirls.text = [NSString stringWithFormat: @"%d", g];
+}
+-(void)showTotal:(int)t{
+    _total.text = [NSString stringWithFormat:@"%d", t];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     contador = [Contador instancia];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:@"NumUpdate" object:nil];
+    [self click:self];
+    [contador setDelegate:self];
+    
 }
 
-//atualização dos dados quando o contador é alterado
--(void)update:(NSNotification*)notification{
-    _totalBoys.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"boy"] intValue]];
-    _totalGirls.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"girl"] intValue]];
-    _total.text = [NSString stringWithFormat: @"%d", [notification.userInfo[@"total"] intValue]];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

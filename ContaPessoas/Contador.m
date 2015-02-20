@@ -15,6 +15,12 @@
     int girl;
 }
 
+@synthesize  delegate;
+
+- (void) setDelegate:(id)newDelegate{
+    delegate = newDelegate;
+}
+
 static Contador *_instancia;
 
 -(id)init {
@@ -35,15 +41,13 @@ static Contador *_instancia;
 
 - (void)maisUmCueca {
     boy = boy + 1;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NumUpdate"
-                                                        object:self
-                                                      userInfo:@{@"boy":[NSNumber numberWithInt: boy], @"girl":[NSNumber numberWithInt:girl],@"total":[NSNumber numberWithInt: boy+girl]}];
+    [delegate showBoys:boy];
+    [[self delegate]showTotal:boy+girl];
 }
 - (void)maisUmaGata {
     girl++;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NumUpdate"
-                                                        object:self
-                                                      userInfo:@{@"boy":[NSNumber numberWithInt: boy], @"girl":[NSNumber numberWithInt:girl],@"total":[NSNumber numberWithInt: boy+girl]}];
+    [delegate showGirls:girl];
+    [[self delegate]showTotal:boy+girl];
 }
 
 -(int)getBoys {
