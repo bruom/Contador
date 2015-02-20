@@ -41,13 +41,11 @@ static Contador *_instancia;
 
 - (void)maisUmCueca {
     boy = boy + 1;
-    [delegate showBoys:boy];
-    [[self delegate]showTotal:boy+girl];
+    [delegate mostraDados];
 }
 - (void)maisUmaGata {
     girl++;
-    [delegate showGirls:girl];
-    [[self delegate]showTotal:boy+girl];
+    [delegate mostraDados];
 }
 
 -(int)getBoys {

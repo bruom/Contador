@@ -16,14 +16,10 @@
 
 @implementation SecondViewController
 
--(void)showBoys:(int)b{
-    _totalBoys.text = [NSString stringWithFormat: @"%d", b];
-}
--(void)showGirls:(int)g{
-    _totalGirls.text = [NSString stringWithFormat: @"%d", g];
-}
--(void)showTotal:(int)t{
-    _total.text = [NSString stringWithFormat:@"%d", t];
+-(void)mostraDados{
+    _totalBoys.text = [NSString stringWithFormat: @"%d", [contador getBoys]];
+    _totalGirls.text = [NSString stringWithFormat: @"%d", [contador getGirls]];
+    _total.text = [NSString stringWithFormat: @"%d", [contador getTotal]];
 }
 
 - (void)viewDidLoad {

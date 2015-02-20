@@ -8,15 +8,12 @@
 
 @protocol MostradorDelegate
 @required
--(void)showBoys:(int)b;
--(void)showGirls:(int)g;
--(void)showTotal:(int)t;
+-(void)mostraDados;
 
 @end
 
 @interface Contador : NSObject
 {
-    id <MostradorDelegate> delegate;
 }
 
 @property (retain) id<MostradorDelegate> delegate;
